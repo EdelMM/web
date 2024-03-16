@@ -1,0 +1,257 @@
+:root {
+    --balnco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+} /*definicion de "variables css, sirven para agrupar ciertas cosas que necesitamos llamar*/
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* hack para box model*/
+    scroll-snap-type: y mandatory;
+}
+
+/*scroll snap*/
+.nav-scroll,
+.servicios-scroll,
+.contacto-scroll,
+.footer-scroll{
+    scroll-snap-align: start;
+    scroll-snap-type: always;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit; /*sirve para que el tamaño que le hemos dado a la imagen no se vea afectado por el padding, o margin o border*/
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif; /*fuente traida de google*/
+    background-image: linear-gradient(
+        to top,
+        var(--grisClaro) 0%,
+        var(--balnco) 100%
+    ); /*para aplicar degradado en toda la pagina, primero se describe hacia donde irá el degradado, despues los colores que va tomar, y por ultimo de qué porcentaje de la pagina a qué porcentaje de la pagina*/
+}
+
+h1 {
+    font-size: 3.8rem; /*para el tamaño de la fuente*/
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1,
+h2,
+h3 {
+    text-align: center; /*para alinear el texto*/
+}
+.titulo span {
+    /*cuando comienza con un "." significa que está refiriendose a clases definidas anteriormente en html*/
+    /*especificidad css, en este caso se está modificando un span que está dentro de una clase llamada titulo*/
+    font-size: 2rem;
+}
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto; /*cuando se define una vez, aplica para los 4 lados, cuando e define 2 veces de manera distinta, el primero aplica a top y bottom, el segundo a right y left, se hace para reducir codigo*/
+}
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.53);
+    box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.53);
+    background-color: var(--balnco);
+    border-radius: 10px;
+    padding: 3rem;
+    padding-top: 0.5rem; 
+}
+.boton {
+    background-color: var(--secundario); /*color de fondo del boton*/
+    color: var(--balnco); /*color del texto del boton*/
+    padding: 1rem 3rem; /*para hacer mas "gordito" el boton*/
+    margin-top: 3rem; /*para bajar un poco el boton*/
+    font-size: 2rem; /*tamaño de la fuente*/
+    text-decoration: none; /*para quitar linea inferior*/
+    text-transform: uppercase; /*para poner el texto en mayusculas*/
+    font-weight: bold; /*para poner en negritas el texto*/
+    border-radius: 0.5rem; /*para redondear las esquinas del boton*/
+    width: 90%; /*para que ocupe el 90% de la pantalla*/
+    text-align: center; /*para que el texto se alinee al centro del boton*/
+    border: none;
+}
+@media (min-width: 768px) {
+    .boton {
+        width: auto; /*para que sobrepasando los 768px el boton deje de ocupar el 90% del ancho de la pantalla*/
+    }
+}
+.boton:hover {
+    cursor: pointer;
+}
+
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: end;
+}
+
+.nav-bg {
+    background-color: var(--secundario); /*manera de mandar llamar las variables que declaramos en root*/
+}
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /*justifica el contenido mandando el primer y ultimo elementos a las orillas y dividiendo el espacio restante en los elementos que quedan*/
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+    }
+}
+.navegacion-principal a {
+    color: var(--balnco);
+    text-decoration: none; /*utilizado para quitar la linea que está debajo de los enlaces*/
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem; /*funciona como para "hacer gordo" al elemento selecionado*/
+}
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--negro);
+}
+.hero {
+    background-image: url(../img/hero.jpg); /*ruta de la imagen que ponemos de fondo*/
+    background-repeat: no-repeat; /*sirve para que al hacer la imagen pequeña no se repita*/
+    background-size: cover; /*sirve para cubrir todo el ancho de l apantalla y que la imagen no se quede corta*/
+    height: 450px;
+    margin-bottom: 2rem;
+
+    position: relative;
+}
+.contenido-hero {
+    position: absolute;
+    background-color: rgb(0 0 0 / 65%);
+    width: 100%;
+    height: 100%;
+    /*para alinear horizontal y verticalmente todo lo que queramos \abajo/   */
+    display: flex; /*   \ /    */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contenido-hero h2,       /*al usar comas estamos diciendo que queremos referirnos a cada uno de los contenidos que se mencionan, se separan con comas*/
+.contenido-hero p {
+    color: var(--balnco);
+}
+.ubicacion {
+    /*para alinear icono de mapa con el nombre de la ubicacion*/
+    display: flex;
+    align-items: flex-end;
+}
+
+/*Servicios*/
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(
+            3,
+            1fr
+        ); /*sirve para colocar 3 columnas, el "1fr" significa que vada columna va tomar una fraccion igual, en este caso 1/3 del 100%*/
+        /*significan lo mismo las siguientes lineas
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-columns: 1fr 1fr 1fr;
+        */
+        column-gap: 5rem; /*sirve para establecer un espacio entre columnas*/
+    }
+}
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio p {
+    line-height: 2; /*sirve para aplicar un interlineado a el texto*/
+    text-align: center;
+}
+.servicio h3 {
+    color: var(--secundario); /*el titulo de cada apartado de los servicios se ponga de color azul*/
+}
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem; /*estas dos lineas son para definir un cuadrado para los iconos*/
+    background-color: var(--primario); /*color de los cuadrados*/
+    border-radius: 50%; /*aqui hacemos redondos a los cuadrados, quedando circulos*/
+    display: flex; /*añadimos propiedades de flexbox*/
+    justify-content: space-evenly; /*para alinear los dos iconos que estan juntos */
+    align-items: center; /*para que los iconos bajen al centro del cisculo*/
+}
+
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*utiliza el valor más pequeño*/
+    margin: 0 auto; /*para alinear al centro se usa cuando tengamos un elemento que su padre no sea un display flex*/
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    color: var(--primario);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /*para dividir el espacio en dos columnas*/
+        column-gap: 1rem; /*para separar las columnas*/
+    }
+
+    .campo:nth-child(1),
+    .campo:nth-child(4) {
+        grid-column: 1/3; /*con nth-child(), seleccionamos entre los campos que tengan la misma clase, y el número dentro del parentesis es la posision en la que se encuentra el campo que queremos seleccionar*/
+        /*con grid-column, seleccionamos de qué columna a qué columna queremos que se muestre nuestro elemento, esto aplica tambien con rows para elegir en qué filas se muestran los elementos*/
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--balnco); /*color del texto de los label*/
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block; /*cada label va a tomar todo el espacio disponible */
+}
+.campo textarea {
+    height: 20rem;
+}
+.input-text {
+    width: 100%; /*que tome todo el espacio disponible*/
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem; /*esquinas redondeadas*/
+}
+
+.footer {
+    text-align: center;
+}

@@ -1,0 +1,60 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.6rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.entrada-blog a {
+    display: inline-block;
+    background-color: #2196f3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .dos-columnas {
+        display: flex; /*acceso a todas las propiedades de flexbox*/
+        /*display felx sí cambia un poco el diseño de la pantalla aun sin haberle definido como queremos que se muestre,  porque cuando lo activamos, todos los elementos hijos se muestran de izquierda a derecha*/
+        justify-content: space-between;
+    }
+    .entrada-blog {
+        flex-basis: calc(
+            50% - 1rem
+        ); /*lo que estamos diciendo es que nos calcule el 50% y le restamos 1rem, luego en el madeia querie aplicamos justify content space between para separalos*/
+        /*es equivalente al gap de grid*/
+
+        /*otra forma de hacerse*/
+        flex: 0 0 calc(50% - 1rem);
+        /*el primer cero es el factor de crecimiento
+        el segundo es el factor de hacerlo mas pequeño
+        y finalmente el tamaño base que es lo mismo que flex-basis*/
+    }
+}

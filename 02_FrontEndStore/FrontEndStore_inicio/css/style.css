@@ -1,0 +1,259 @@
+:root {
+    --primario: #9c27b0;
+    --primarioOsc: #89119d;
+    --secundario: #ffce00;
+    --secundarioOsc: rgb(233, 187, 2);
+    --blanco: #fff;
+    --negro: #000;
+
+    --fuentePrinc: "Staatliches", cursive;
+}
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /*es para que 1rem sea igual a 10px, y así evitar estar con la calculadora de rems*/
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/**Globales**/
+body {
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5; /*esto es el interlineado*/
+}
+p {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+}
+
+/*el contenedor nos sirve para delimitar en hasta donde se van a mostrar los elementos de nuestra pagina*/
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+h1,
+h2,
+h3 {
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuentePrinc);
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.2rem;
+}
+h3 {
+    font-size: 2.4rem;
+}
+
+/** Header **/
+.header {
+    display: flex;
+    justify-content: center;
+}
+.header__logo {
+    margin: 3rem 0; /*margen que tiene el logo arriba y abajo*/
+}
+
+/** Navegación **/
+.navegacion {
+    background-color: var(--primarioOsc);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /*con gap separamos los elementos*/
+}
+.navegacion__enlace {
+    font-family: var(--fuentePrinc);
+    color: var(--blanco);
+    font-size: 3rem;
+}
+.navegacion__enlace--activo,
+.navegacion__enlace:hover {
+    color: var(--secundario);
+}
+
+/** Footer **/
+.footer {
+    background-color: var(--primarioOsc);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto {
+    text-align: center;
+    font-family: var(--fuentePrinc);
+    font-size: 2.2rem;
+}
+
+/** Grid **/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem; /*para separar lascolumas y filas*/
+}
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/** Productos **/
+.producto {
+    background-color: var(--primarioOsc);
+    padding: 1rem;
+}
+.producto__imagen {
+    width: 100%;
+}
+.producto__nombre {
+    font-size: 4rem;
+}
+.producto__precio {
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+.producto__nombre,
+.producto__precio {
+    font-family: var(--fuentePrinc);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/** Gráficos **/
+.grafico {
+    min-height: 30rem; /*altura minima de graficos*/
+    background-repeat: no-repeat; /* para que la imagen no se repita*/
+    background-size: cover; /* para estirar la imagen ya que no se repite*/
+    grid-column: 1 / 3; /*para establecer de qué columna a qué columna se va a visualizar la imagen*/
+}
+
+.grafico--node {
+    grid-row: 7/8;
+    background-image: url(../img/grafico2.jpg);
+}
+/*a partir de 768px para arriba, va a mostrar como se menciona dentro del media querie*/
+@media (min-width: 768px) {
+    .grafico--node {
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+        background-image: url(../img/grafico2.jpg);
+    }
+}
+.grafico--camisas {
+    grid-row: 2 / 3; /*este grafico se muestra de la fila 2 a la 3*/
+    background-image: url(../img/grafico1.jpg);
+}
+
+/** NOSOTROS **/
+
+.nosotros {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    /*cuando está pequeño, crea dos filas, y el tamaño es automatico para que si la imagen ocupa menos, no quede un espacio vacio*/
+}
+@media (min-width: 768px) {
+    .nosotros {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+        /*cuando supera los 768px, crea dos columnas de igual tamaño, con un espaciado de 2rem entre ellas*/
+    }
+}
+.nosotros__img {
+    grid-row: 1/2;
+    /*cuando está debajo de los 768px acomoda la imagen en el primero renglon*/
+}
+@media (min-width: 768px) {
+    .nosotros__img {
+        grid-column: 2/3;
+        /*si supera los 768px colocará la imagen en la segunda columna*/
+    }
+}
+
+/** Comprar **/
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .bloques {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.bloque {
+    text-align: center;
+}
+.bloque__titulo {
+    margin: 0;
+}
+
+/** PRODUCTO **/
+
+@media (min-width: 768px) {
+    .camisa {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+.camisa__img {
+    padding: 3rem;
+    padding-top: 0rem;
+}
+.camisa__contenido {
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+@media (min-width: 768px) {
+    .camisa__contenido {
+        padding-right: 3rem;
+        padding-left: 0;
+    }
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    font-size: 2rem;
+}
+.formulario__pedido {
+    /*border-color: var(--primarioOsc);
+    border-width: 1rem;
+    border-style: solid;*/
+
+    border: 1rem solid var(--primarioOsc);
+    /*la anterior linea equivale a lo mismo en las tres lineas comentadas de arriba*/
+    padding: 1rem;
+    background-color: transparent; /*simplemente no aplica el color y deja el de la pagina*/
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.formulario__submit {
+    grid-column: 1/3;
+    padding: 2rem;
+    background-color: var(--secundario);
+    font-family: var(--fuentePrinc);
+    border: none;
+    transition: background-color .3s ease;
+}
+.formulario__submit:hover{
+    cursor: pointer;
+    background-color: var(--secundarioOsc);
+}
+.cantidad{
+
+}
