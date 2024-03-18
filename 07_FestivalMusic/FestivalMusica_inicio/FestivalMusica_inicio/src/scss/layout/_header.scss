@@ -7,26 +7,28 @@
     
     h1{
         color: v.$blanco;
+        text-align: center;
+
+    }
+    .contenido-header{
+        @include m.tablet {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
 .navegacion-principal{
-    background-color: red;
-    @include m.telefono{
-        background-color: blue;
+    @include m.tablet {
+        display: flex;
+        gap: 2rem   ;
     }
-    @include m.tablet{
-        background-color: greenyellow;
-    }
-    @include m.desktop{
-        background-color: black;
-    }
-    @include m.desktopXL{
-        background-color: purple;
-    }
-
     a{
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
         color: v.$blanco;
         font-size: 2.4rem;
+        
         &:hover{
             color: v.$amarillo;
         }

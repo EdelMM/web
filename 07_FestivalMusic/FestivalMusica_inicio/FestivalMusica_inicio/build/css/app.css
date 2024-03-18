@@ -359,32 +359,25 @@ h3 {
 }
 .header h1 {
   color: #fff;
-}
-
-.navegacion-principal {
-  background-color: red;
-}
-@media (min-width: 480px) {
-  .navegacion-principal {
-    background-color: blue;
-  }
+  text-align: center;
 }
 @media (min-width: 768px) {
-  .navegacion-principal {
-    background-color: greenyellow;
+  .header .contenido-header {
+    display: flex;
+    justify-content: space-between;
   }
 }
-@media (min-width: 992px) {
+
+@media (min-width: 768px) {
   .navegacion-principal {
-    background-color: black;
-  }
-}
-@media (min-width: 1200px) {
-  .navegacion-principal {
-    background-color: purple;
+    display: flex;
+    gap: 2rem;
   }
 }
 .navegacion-principal a {
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
   color: #fff;
   font-size: 2.4rem;
 }
