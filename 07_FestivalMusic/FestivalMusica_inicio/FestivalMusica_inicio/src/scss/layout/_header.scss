@@ -5,22 +5,37 @@
 
     background-color: v.$verde;
     
+    @include m.tablet {
+        &.fijo{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 .1rem 2rem #333;
+        }
+    }
+
     h1{
         color: v.$blanco;
         text-align: center;
+        @include m.tablet {
+            margin: 0;
+        }
 
     }
     .contenido-header{
+        padding: 2rem;
         @include m.tablet {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
     }
 }
 .navegacion-principal{
     @include m.tablet {
         display: flex;
-        gap: 2rem   ;
+        gap: 2rem;
     }
     a{
         display: block;
@@ -28,7 +43,10 @@
         margin-bottom: 1rem;
         color: v.$blanco;
         font-size: 2.4rem;
-        
+        @include m.tablet {
+            margin: 0;
+        }
+
         &:hover{
             color: v.$amarillo;
         }

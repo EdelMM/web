@@ -12,10 +12,17 @@ html{
 body{
     font-family: v.$fuentePrincipal;
     font-size: 1.6rem;
+    &.fijar-body{
+        overflow: hidden;
+    }
+    &.scroll-bueno{
+        padding-top: 8.6rem;
+    }
 }
 p{
     font-size: 2rem;
     color: v.$prietoPolarizado;
+    line-height: 1.5;
 }
 .contenedor{
     width: 95%;
@@ -37,4 +44,10 @@ h2{
 }
 h3{
     font-size: 3rem;
+}
+img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
 }

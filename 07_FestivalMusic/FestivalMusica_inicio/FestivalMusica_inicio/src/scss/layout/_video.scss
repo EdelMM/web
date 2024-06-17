@@ -1,0 +1,48 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.video {
+    position: relative;
+    max-height: 75rem;
+    min-height: 50rem;
+    overflow: hidden; //las dos lineas anteriores sirven para cortar el video a cirta altura, y ademas que el video se corte igual, ya que con la primera linea nomás nos cortaba el gradiente
+    .overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgb(242, 50, 255);
+        background: linear-gradient(
+            162deg,
+            rgba(242, 50, 255, 0.34217436974789917) 0%,
+            rgba(255, 0, 74, 0.30015756302521013) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    video {
+        width: auto;
+        display: block;
+        @include m.desktop {
+            width: 100%;
+        }
+    }
+}
+
+.contenido-video {
+    z-index: 10; //sirve para superponer el texto sobre el video
+    h2 {
+        color: v.$blanco;
+        font-size: 7rem;
+        margin: 0;
+    }
+    p {
+        background-color: v.$rosa;
+        display: inline-block;
+        color: v.$blanco;
+        font-size: 3rem;
+        margin: 0;
+        padding: 1.5rem;
+        font-weight: 700;
+    }
+}
